@@ -52,7 +52,10 @@ class Triangle {
 	constructor(ab , bc, ac ){
 		this.a = a
 		this.b= b
-		this.c = a
+		this.c = c
+	}
+	getAB(){
+		return new Line (this)
 	}
 }
 
@@ -61,10 +64,10 @@ let tri = new Triangle
  new Point  (155)
  new Point  (18,8) 
  
-
- 
  
  tri.a.print()
  tri.b.print()
  tri.c.print()
+
+ console.log(tri.getAB());
 	
