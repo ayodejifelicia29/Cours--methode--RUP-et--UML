@@ -1,0 +1,58 @@
+Cas d'utilisation: Planifier un cours
+Acteur:            Directeur
+Déclencheur:       Se rendre sur la page de planification
+Précondition:      Être authentifié en tant que directeur
+Scénario nominal:
+1. Le système affiche la liste des classes
+2. Le directeur sélectionne une classe
+3. Le système traite la sélection
+4. le système affiche le planning de cette classe
+5. le directeur sélectionne des dates
+6. le système affiche des actions (ajouter, déplacer, supprimer, supprimer formateur)
+7. le directeur sélectionne "ajouter"
+8. le système affiche une liste de cours
+9. Le directeur sélectionne un cours
+10. le système affiche le formulaire de planification
+11. le directeur soumet le formulaire
+12. le système traite les données envoyées par le directeur
+13. le système ajoute le cours au planning
+14. le système affiche le nouveau planning
+
+Scénario alternatif:
+2.a. La classe n'est pas affiché
+     Use case : Gérer les classes
+3.a. La classe n'existe pas
+     Lève une erreur
+     Renvoie vers 2.
+5.a  Le directeur décide de revenir en arrière
+     Renvoie vers 2.
+5.b  Le planning est plein
+     5.b.1 Proposer de rallonger le temps de formation
+     CF: gérer les classes
+     5.b.2 Proposer de déplacer ou de supprimer une date
+     continuer vers 6.
+6.a  Le planning est plein
+     Ajouter doit être grisé
+     Renvoie vers 5.b
+9.a  Le cours n'est pas affiché
+     Use case : Créer un cours
+9.b  Le retourne en arrière
+     Renvoie vers 6.
+11.a Le directeur retourne en arrière
+     Renvoie vers 9.
+12.a Les informations soumise par le directeur n'existent pas
+     Lève une erreur
+     Renvoie vers 11.
+12.b Le cours possède déjà un formateur
+     Lève une erreur
+     Renvoie vers 6.
+
+Description du formulaire de planification :
+choix du cours (prérempli)
+choix des dates (prérempli)
+choix des formateurs (facultatif)
+      + disponibles
+      + enseignant la matière
+      + trier, placer en haut ceux qui sont déjà intervenus
+distanciel ou présentiel
+choix d'une salle (facultatif)
